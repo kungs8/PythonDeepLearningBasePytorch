@@ -1,2 +1,2 @@
 # PythonDeepLearningBasePytorch
-基于深度学习的python实现
+Python深度学习基于Pytorch
