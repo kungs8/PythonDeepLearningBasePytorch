@@ -142,7 +142,7 @@ for epoch in range(num_epochs):
         optimizer.step()
 
         if (i + 1) % 100 == 0:
-            print(f"Epoch {epoch+1}/{num_epochs+1}, Step [{i+1}/{len(data_loader)}], Reconst Loss: {reconst_loss.item():.4f}, KL Div: {kl_div.item():.4f}")
+            print(f"Epoch {epoch+1}/{num_epochs}, Step [{i+1}/{len(data_loader)}], Reconst Loss: {reconst_loss.item():.4f}, KL Div: {kl_div.item():.4f}")
     
     with torch.no_grad():
         # 保存采样图像，即潜在向量Z通过解码器生成的新图像
