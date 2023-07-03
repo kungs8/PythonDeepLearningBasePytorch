@@ -98,7 +98,7 @@ for epoch in range(num_epochs):
 
         # 定义图像是真或假的标签
         real_labels = torch.ones(batch_size, 1).to(device)
-        fake_labels = torch.ones(batch_size, 1).to(device)
+        fake_labels = torch.zeros(batch_size, 1).to(device)
 
         # ================================================
         #                    训练判别器                    #
