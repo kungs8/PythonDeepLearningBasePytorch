@@ -75,7 +75,7 @@ dataset = torchvision.datasets.MNIST(root="./data", train=True, transform=transf
 data_loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
 
 # 3.4 构建AVE模型，主要由Encode和Decode两部分组成
-# 定义AVE模型
+# 定义VAE模型
 class VAE(nn.Module):
     def __init__(self, img_size=784, h_dim=400, z_dim=20):
         super(VAE, self).__init__()
