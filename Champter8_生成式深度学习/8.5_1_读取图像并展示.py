@@ -88,6 +88,21 @@ def main():
     plt.imshow(img)
     plt.show()
 
+    # 7. 可视化损失值
+    # 记录判别器、生成器的损失值代码如下:
+    # 配置模型存储信息
+    # writer = SummaryWriter(log_dir="logs")
+    # writer.add_scalars("scalars", {"g_loss": g_loss, "d_loss": d_loss}, step)
+    # 使用TensorBoard查看SummaryWriter保存的日志文件的步骤:
+    # 1) 安装TensorBoard：在命令行中输入pipinstalltensorboard，安装TensorBoard工具。
+    # 2) 启动 TensorBoard：在命令行中输入`tensorboard --logdir=/path/to/logs`，
+    #     其中 /path/to/logs 是您保存日志文件的路径。
+    #     执行该命令后，TensorBoard 将在默认端口（6006）上启动一个 Web 服务器。
+    # 3) 打开 TensorBoard：在浏览器中输入 http://localhost:6006，打开 TensorBoard 界面。
+    # 4) 查看日志文件：在 TensorBoard 界面中，您可以选择要查看的日志文件，例如训练损失、准确率、梯度等。
+    #     可以使用各种可视化工具，例如曲线图、直方图、散点图等，来分析这些数据。
+
+
 
 if __name__ == '__main__':
     main()
