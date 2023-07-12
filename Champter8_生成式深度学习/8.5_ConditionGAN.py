@@ -200,10 +200,10 @@ def main():
         # 保存真图像
         if (epoch + 1) == 1:
             images = images.reshape(images.size(0), 1, 28, 28)
-            save_image(denorm(images), os.path.join(sample_dir, "real_images.png"))
+            save_image(denorm(images), os.path.join(sample_dir, "real_images.png"), nrow=10)
         # 保存假图像
         fake_images = fake_images.reshape(fake_images.size(0), 1, 28, 28)
-        save_image(denorm(fake_images), os.path.join(sample_dir, f"fake_images_{epoch+1}.png"))
+        save_image(denorm(fake_images), os.path.join(sample_dir, f"fake_images_{epoch+1}.png"), nrow=10)
 
     # 保存模型
     torch.save(G.state_dict(), "G.ckpt")
