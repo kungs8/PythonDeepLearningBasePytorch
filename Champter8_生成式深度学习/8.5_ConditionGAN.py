@@ -117,9 +117,12 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # 定义一些超参数
-    num_epochs = 50
+    num_epochs = 2
     batch_size = 100
-    sample_dir = "temp/cgan_sample"
+    sample_dir = "./temp/cgan_sample"
+    ckps_dir = "./ckpts"
+    if not os.path.exists(ckps_dir):
+        os.makedirs(ckps_dir)
     # 配置模型存储信息
     writer = SummaryWriter(log_dir="logs")
 
@@ -193,7 +196,7 @@ def main():
             writer.add_scalars("scalars", {"g_loss": g_loss, "d_loss": d_loss}, step)
 
             if (i + 1) % 200 == 0:
-                print(f"Epoch [{epoch}/{num_epochs}], Step [{i+1}/{total_step}], d_loss:{d_loss.item():.4f}, "
+                print(f"Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{total_step}], d_loss:{d_loss.item():.4f}, "
                       f"g_loss:{g_loss.item():.4f}, D(x):{real_score.mean().item():.2f}, "
                       f"D(G(z)):{fake_score.mean().item()*(-1):.2f}")
 
@@ -206,8 +209,8 @@ def main():
         save_image(denorm(fake_images), os.path.join(sample_dir, f"fake_images_{epoch+1}.png"), nrow=10)
 
     # 保存模型
-    torch.save(G.state_dict(), "G.ckpt")
-    torch.save(D.state_dict(), "D.ckpt")
+    torch.save(G.state_dict(), f"{ckps_dir}/G.ckpt")
+    torch.save(D.state_dict(), f"{ckps_dir}/D.ckpt")
 
 
 if __name__ == '__main__':
